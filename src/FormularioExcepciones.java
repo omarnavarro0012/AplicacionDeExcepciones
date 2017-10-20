@@ -6,18 +6,37 @@ import java.awt.event.ActionListener;
  * Created by Alumnos on 19/10/2017.
  */
 public class FormularioExcepciones {
-    private JButton button1;
+    private JButton Accion;
     private JPanel panel1;
     private JTextField numero2;
     private JTextField numero1;
 
-    public FormularioExcepciones() {
-        button1.addActionListener(new ActionListener() {
+    public FormularioExcepciones()
+    {
+        Accion.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-//                System.out.println("Hola !!"+ nombre.getText());
-                JOptionPane.showMessageDialog( null,"Dividir  " +numero1.getText()+ "entre " + numero2.getText());
-                JOptionPane.showMessageDialog(null, "Resultado: "+numero1/numero2);
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                try
+                {
+                    // System.out.println("Hola !!"+ nombre.getText());
+                    int num1 = Integer.parseInt(numero1.getText());
+                    int num2 = Integer.parseInt(numero2.getText());
+                    int resultado = num1 / num2;
+                    JOptionPane.showMessageDialog(null, "Dividir  " + numero1.getText() + " entre " + numero2.getText()
+                            + " es " + resultado);
+
+
+                }
+                catch (ArithmeticException e)
+                {
+                    JOptionPane.showMessageDialog(null,"Valor no valido");
+                }
+                catch (NumberFormatException e)
+                {
+                    JOptionPane.showMessageDialog(null,"Valor no numerico");
+                }
 
             }
         });
